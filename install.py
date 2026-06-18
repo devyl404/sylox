@@ -25,7 +25,6 @@ ZPHISHER_REPO_URL = "https://github.com/htr-tech/zphisher.git"
 CAMPHISH_REPO_URL = "https://github.com/LakshyaSharma207/CamPhish.git"
 ANGRYOXIDE_REPO_URL = "https://github.com/Ragnt/AngryOxide.git"
 FLUXION_REPO_URL = "https://github.com/FluxionNetwork/fluxion.git"
-THEFATRAT_REPO_URL = "https://github.com/Screetsec/TheFatRat.git"
 CUPP_REPO_URL = "https://github.com/Mebus/cupp.git"
 
 
@@ -205,18 +204,7 @@ def install_repo(launch_tool=True):
         else:
             print_status(f"[✓] Fluxion installé dans {fluxion_path}", GREEN)
 
-    thefatrat_path = DEPENDENCIES_DIR / "TheFatRat"
-    if thefatrat_path.exists():
-        print_status(f"[i] le dépôt TheFatRat existe déjà : {thefatrat_path}", YELLOW)
-        print_status("[i] mise à jour via git pull...", CYAN)
-        run_command(["git", "-C", str(thefatrat_path), "pull", "--ff-only"], env={"GIT_TERMINAL_PROMPT": "0"})
-    else:
-        print_status(f"[+] clonage depuis {THEFATRAT_REPO_URL}", GREEN)
-        result = run_command(["git", "clone", "--depth", "1", THEFATRAT_REPO_URL, str(thefatrat_path)], check=False, env={"GIT_TERMINAL_PROMPT": "0"})
-        if result != 0:
-            print_status("[!] le clonage TheFatRat a échoué. Le dépôt peut être inaccessible ou nécessiter un accès GitHub spécifique.", RED)
-        else:
-            print_status(f"[✓] TheFatRat installé dans {thefatrat_path}", GREEN)
+    
 
     cupp_path = DEPENDENCIES_DIR / "cupp"
     if cupp_path.exists():
